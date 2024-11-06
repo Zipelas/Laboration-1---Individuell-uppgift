@@ -1,6 +1,7 @@
 window.addEventListener("DOMContentLoaded", main);
 
 function main() {
+    // Visa startskärmen när sidan har laddats
     document.getElementById("start-screen").classList.remove("hidden");
 }
 
@@ -24,18 +25,18 @@ function chooseOption(option) {
     const option2 = document.getElementById("option2");
 
     if (option === 1) {
-        // Om användaren väljer "Gå till vänster"
-        sceneImage.src = "left-path-image.jpg";
-        sceneText.innerText = "Du valde att gå till vänster och möter en hög mur. Ska du försöka klättra över eller gå tillbaka?";
-        characterImage.src = "character2.jpg";
-        option1.innerText = "Klättra över";
-        option2.innerText = "Gå tillbaka";
+        // Om användaren väljer "Hissen"
+        sceneImage.src = "assets/images/hissen.jpg";
+        sceneText.innerText = "Du tar hissen, som sakta men säkert för dig ner till bottenvåningen. Du slipper trapporna, men tiden går långsamt...";
+        characterImage.src = "assets/images/hissen.jpg";
+        option1.innerHTML = "<h3>Vänta tålmodigt</h3> Hissen är långsam, men du är på väg.";
+        option2.innerHTML = "<h3>Hoppa av och ta trapporna</h3> Kanske kan du spara lite tid.";
     } else if (option === 2) {
-        // Om användaren väljer "Gå till höger"
-        sceneImage.src = "right-path-image.jpg";
-        sceneText.innerText = "Du gick till höger och stöter på en flod. Ska du simma över eller leta efter en bro?";
-        characterImage.src = "character3.jpg";
-        option1.innerText = "Simma över";
-        option2.innerText = "Leta efter en bro";
+        // Om användaren väljer "Trapporna"
+        sceneImage.src = "assets/images/trapporna.jpg";
+        sceneText.innerText = "Du tar trapporna i hög fart. Dina ben börjar kännas tunga, men du gör snabb framsteg.";
+        characterImage.src = "assets/images/trapporna.jpg";
+        option1.innerHTML = "<h3>Fortsätt springa</h3> Du sparar tid, men det är jobbigt.";
+        option2.innerHTML = "<h3>Ta en paus</h3> Du kan behöva en sekund att andas.";
     }
 }
