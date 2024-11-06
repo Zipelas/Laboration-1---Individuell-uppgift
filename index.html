@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uppdraget</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/main.js"></script>
+</head>
+<body>
+    <!-- Startsida -->
+    <div class="container" id="start-screen">
+        <div class="centered-content">
+            <img src="assets/images/karta_startsida.jpg" alt="Uppdragets bild" class="start-image">
+            <p class="text">Ditt uppdrag, om du väljer att acceptera det, är att ta dig från ditt hem till skolan. Du kommer att stöta på flera hinder.</p>
+            <button onclick="startMission()" class="start-button">Starta uppdraget</button>
+        </div>
+    </div>
+
+    <!-- Scen 1 -->
+    <div class="container hidden" id="scene-1">
+        <div class="top-row">
+            <div class="left-div">
+                <img src="scene1-image.jpg" alt="Scenbild" id="scene-image">
+            </div>
+            <div class="right-div">
+                <p id="scene-text">Du står vid korsningen nära ditt hem och ser två vägar framåt. Vilken väg ska du välja?</p>
+            </div>
+        </div>
+
+        <div class="character-img">
+            <img src="character1.jpg" alt="Pratar" id="character-image">
+        </div>
+
+        <div class="button-container">
+            <button onclick="chooseOption(1)" id="option1" class="choice-button">Gå till vänster</button>
+            <button onclick="chooseOption(2)" id="option2" class="choice-button">Gå till höger</button>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
