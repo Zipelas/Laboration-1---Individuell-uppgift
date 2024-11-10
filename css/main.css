@@ -7,44 +7,48 @@
     font-family: 'Pixelify Sans', sans-serif;
 }
 
-body, html {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+body {
     background-color: #0c0cc5;
     color: #00ff40;
 }
 
-.container {
-    text-align: center;
-    max-width: 800px;
-    width: 100%;
-}
-
-.hidden {
-    display: none !important; /* Viktigt för att säkerställa att elementet döljs */
-}
-
-.centered-content {
+#container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 20px;
 }
 
-.start-image {
+#top_row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
     width: 100%;
-    max-width: 400px;
+    margin-bottom: 20px;
+}
+
+.top_row_center_div {
+    padding-top: 40px;
+    border: 1px solid #00ff40;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 80%;
+    height: 70vh;
+}
+
+.start_page_Image {
+    width: 50%;
+    height: auto;
     border-radius: 8px;
+    object-fit: cover;
     margin-bottom: 20px;
 }
 
-.intro-text {
-    font-size: 20px;
-    margin-bottom: 20px;
-}
-
-.start-button, .choice-button {
+.button1, .choice-button {
     padding: 8px 12px;
     border: none;
     border-radius: 5px;
@@ -56,53 +60,17 @@ body, html {
     text-align: left;
 }
 
-.start-button:hover, .choice-button:hover {
+.button1:hover, .choice-button:hover {
     background-color: #009933;
 }
 
-.top-row {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-.left-div, .right-div {
-    width: 35%;
-}
-
-.left-div img, .character-image img {
-    width: 100%;
-    border-radius: 8px;
-}
-
-.scene-description {
-    font-size: 20px;
-    text-align: left;
-}
-
-.character-image {
-    width: 180px;
-    height: 180px;
-    overflow: hidden;
-    margin: 20px auto;
-}
-
-.character-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.button-container {
+#bottomRowCenterDiv {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    align-items: center;
+    width: 80%;
+    border: 1px solid #00ff40;
+    border-radius: 15px;
+    padding: 10px;
     margin-top: 20px;
-}
-
-.choice-button {
-    text-align: left;
-    width: 40%;
-    max-width: 300px;
 }

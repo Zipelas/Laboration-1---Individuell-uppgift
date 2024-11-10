@@ -1,48 +1,73 @@
 window.addEventListener("DOMContentLoaded", main);
 
 function main() {
-    // Initiering av startskärm och sceninnehåll
+  loadStartScene();
 }
 
-function startMission() {
-    console.log("Startar uppdraget"); // Kontroll för att se om funktionen anropas
-    document.getElementById("start-screen").classList.add("hidden");
-    document.getElementById("scene").classList.remove("hidden");
-    loadScene(1);
+function loadStartScene() {
+  const container = document.getElementById("container");
+  container.innerHTML = "";
+
+  // Skapa topp-rad
+  const topRow = document.createElement("div");
+  topRow.id = 'top_row';
+  
+  // Skapa topRowCenterDiv och lägg till startPageImage
+  const topRowCenterDiv = document.createElement("div");
+  topRowCenterDiv.className = "top_row_center_div";
+  topRowCenterDiv.id = "topRowCenterDiv"; // ID för att kunna hitta elementet senare
+
+  const startPageImage = document.createElement("img");
+  startPageImage.src = "assets/images/karta_startsida.jpg";
+  startPageImage.alt = "Karta för startsidan";
+  startPageImage.className = "start_page_Image";
+
+  topRowCenterDiv.appendChild(startPageImage);
+
+  const textDIV = document.createElement("p");
+  textDIV.textContent = "Ditt uppdrag, om du väljer att acceptera det, är att ta dig från ditt hem till skolan. Du kommer att stöta på flera hinder.";
+  topRowCenterDiv.appendChild(textDIV);
+
+  topRow.appendChild(topRowCenterDiv);
+  container.appendChild(topRow);
+
+  // Skapa botten-rad med bottomRowCenterDiv och knapp
+  const bottomRowCenterDiv = document.createElement("div");
+  bottomRowCenterDiv.id = 'bottomRowCenterDiv';
+
+  const button1 = document.createElement("button");
+  button1.textContent = "Starta uppdrag!";
+  button1.className = "button1";
+  button1.id = "button1"; // ID för att kunna hitta elementet senare
+  button1.onclick = loadScene1;
+
+  bottomRowCenterDiv.appendChild(button1);
+  container.appendChild(bottomRowCenterDiv);
 }
 
-function loadScene(sceneNumber) {
-    const sceneImage = document.getElementById("scene-image");
-    const sceneText = document.getElementById("scene-text");
-    const characterImage = document.getElementById("character-image");
-    const option1 = document.getElementById("option1");
-    const option2 = document.getElementById("option2");
-    const option3 = document.getElementById("option3");
+// Funktion för att uppdatera topRowCenterDiv och button1
+function loadScene1() {
+  // Hämta befintliga element med ID
+  const topRowCenterDiv = document.getElementById("topRowCenterDiv");
+  const button1 = document.getElementById("button1");
 
-    if (sceneNumber === 1) {
-        sceneImage.src = "assets/images/overslept.jpg";
-        sceneText.innerText = "Du vaknar upp i panik av att alarmet på klockan tjuter som hesa Fredrik. Helvete! tänker du argt...";
-        characterImage.src = "assets/images/hissen.jpg";
-        option1.innerHTML = "<h3>Hissen</h3> Den är långsam, men du kommer inte stöta på någon som saktar ner dig.";
-        option2.innerHTML = "<h3>Trapporna</h3> Det går mycket fortare än att ta den långsamma hissen.";
-        option3.classList.add("hidden"); // Dölj knapp 3 i scen 1
-    } else if (sceneNumber === 2) {
-        sceneImage.src = "assets/images/scandinavium.jpg";
-        sceneText.innerText = "Du står vid Scandinaviums hållplats och väntar på spårvagnen. Gud vad sen jag är...";
-        characterImage.src = "assets/images/eas_left.jpg";
-        option1.innerHTML = "Gå hem och hämta mobilen.";
-        option2.innerHTML = "Tjuvåk med spårvagnen.";
-        option3.innerHTML = "Sno en cykel";
-        option3.classList.remove("hidden"); // Visa knapp 3 i scen 2
-    }
+  // Uppdatera topRowCenterDiv med ny text och bild
+  topRowCenterDiv.innerHTML = ""; // Rensar innehållet
+  const newImage = document.createElement("img");
+  newImage.src = "assets/images/karta_overslept.jpg"; // Uppdatera bildkälla
+  newImage.alt = "Ny bild för uppdrag";
+  newImage.className = "start_page_Image"; // Behåller klassen för samma stil
+  topRowCenterDiv.appendChild(newImage);
+
+  const newText = document.createElement("p");
+  newText.textContent = "Nytt uppdrag: Försök att navigera hinder på vägen till skolan.";
+  topRowCenterDiv.appendChild(newText);
+
+  // Uppdatera knappens text och funktionalitet
+  button1.textContent = "Fortsätt till nästa scen";
+  button1.onclick = loadNextScene; // Ny funktion för nästa scen
 }
 
-function chooseOption(choice) {
-    if (choice === 1) {
-        loadScene(2); // Går till scen 2 om "Hissen" väljs i scen 1
-    } else if (choice === 2) {
-        loadScene(2); // Samma om "Trapporna" väljs i scen 1
-    } else if (choice === 3) {
-        alert("Du valde att sno en cykel. Lycka till!"); // Tillfälligt exempel
-    }
+function loadNextScene() {
+  alert("Nästa scen laddas...");
 }
