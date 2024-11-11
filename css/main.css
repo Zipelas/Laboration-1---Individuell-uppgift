@@ -21,30 +21,37 @@ body {
 
 #top_row {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    border: 1px solid #00ff40;
+    border-radius: 5px;
     height: 70vh;
     width: 100%;
-    margin-bottom: 20px;
+    gap: 20px;
 }
 
-.top_row_center_div {
-    padding-top: 40px;
-    border: 1px solid #00ff40;
-    border-radius: 15px;
+#top_row_left, #top_row_center, #top_row_right {
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    width: 80%;
-    height: 70vh;
+}
+
+#top_row_right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left; /* Vänsterställer texten */
+    padding: 20px; /* Valfritt: Lägg till padding för lite luft runt texten */
 }
 
 .start_page_Image {
-    width: 50%;
-    height: auto;
+    width: 80%;
+    height: 60vh;
     border-radius: 8px;
-    object-fit: cover;
+    object-fit: contain;
     margin-bottom: 20px;
 }
 
@@ -57,7 +64,6 @@ body {
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s;
-    text-align: left;
 }
 
 .button1:hover, .choice-button:hover {
