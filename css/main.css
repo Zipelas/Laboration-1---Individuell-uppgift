@@ -1,3 +1,4 @@
+main.css
 @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
 
 * {
@@ -85,4 +86,3 @@ body {
     width: 50px; /* Justera storlek */
     margin-top: 10px; /* Skapa utrymme mellan bilderna */
   }
-  
