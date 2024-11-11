@@ -119,11 +119,21 @@ function loadScene2() {
   const topRowCenterDiv = document.createElement("div");
   topRowCenterDiv.className = "top_row_center_div";
   topRowCenterDiv.id = "top_row_center";
+
   const centerImage = document.createElement("img");
   centerImage.src = "assets/images/eas_left.jpg";
   centerImage.alt = "Bild på dig själv när du funderar vilket val du ska göra";
   centerImage.className = "start_page_Image";
   topRowCenterDiv.appendChild(centerImage);
+
+  // Om mobilen är i inventory, lägg till en liten bild på mobilen
+  if (inventory.includes("mobil")) {
+    const mobileImage = document.createElement("img");
+    mobileImage.src = "assets/images/mobil.webp";
+    mobileImage.alt = "Liten bild på mobil";
+    mobileImage.className = "small_item_image"; // Lägg till CSS för att styra storlek och position
+    topRowCenterDiv.appendChild(mobileImage);
+  }
 
   const topRowRightDiv = document.createElement("div");
   topRowRightDiv.id = "top_row_right";
@@ -134,7 +144,7 @@ function loadScene2() {
   } else {
     rightText.textContent = "Ska du gå tillbaka hem och hämta mobilen, tjuvåka med spårvagnen, eller börja gå?";
   }
-  
+
   topRowRightDiv.appendChild(rightText);
 
   topRow.appendChild(topRowLeftDiv);
@@ -151,7 +161,7 @@ function loadScene2() {
   button1.onclick = inventory.includes("mobil") ? loadScene3 : loadGoBackHome;
 
   const button2 = document.createElement("button");
-  button2.textContent = inventory.includes("mobil") ? "Gå!" : "Tjuvåk med spårvagn";
+  button2.textContent = inventory.includes("mobil") ? "Gå!" : "Tjuvåk med spårvagnen";
   button2.className = "button1";
   button2.onclick = inventory.includes("mobil") ? loadWalk : loadGameOver;
 
@@ -160,7 +170,6 @@ function loadScene2() {
   button3.className = "button1";
   button3.onclick = loadWalk;
 
-  // Lägg till knappar beroende på om mobilen finns i inventory
   if (inventory.includes("mobil")) {
     bottomRowCenterDiv.appendChild(button1);
     bottomRowCenterDiv.appendChild(button3);
@@ -172,7 +181,6 @@ function loadScene2() {
 
   container.appendChild(bottomRowCenterDiv);
 }
-
 // Lägg till mobil i inventory och gå tillbaka till scen 1
 function loadGoBackHome() {
   inventory.push("mobil");
