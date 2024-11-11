@@ -1,3 +1,7 @@
+// Array för att hålla koll på objekt spelaren har med sig
+const inventory = [];
+
+// Laddar startscenen
 window.addEventListener("DOMContentLoaded", main);
 
 function main() {
@@ -8,11 +12,9 @@ function loadStartScene() {
   const container = document.getElementById("container");
   container.innerHTML = "";
 
-  // Skapa topp-rad
   const topRow = document.createElement("div");
   topRow.id = 'top_row';
-  
-  // Skapa topRowCenterDiv och lägg till bild och text
+
   const topRowCenterDiv = document.createElement("div");
   topRowCenterDiv.className = "top_row_center_div";
   topRowCenterDiv.id = "top_row_center";
@@ -31,7 +33,6 @@ function loadStartScene() {
   topRow.appendChild(topRowCenterDiv);
   container.appendChild(topRow);
 
-  // Skapa botten-rad med knapp
   const bottomRowCenterDiv = document.createElement("div");
   bottomRowCenterDiv.id = 'bottomRowCenterDiv';
 
@@ -45,16 +46,14 @@ function loadStartScene() {
   container.appendChild(bottomRowCenterDiv);
 }
 
-// Funktion för att ladda första scenen
+// Laddar första scenen
 function loadScene1() {
   const container = document.getElementById("container");
-  container.innerHTML = ""; // Rensa innehåll
+  container.innerHTML = "";
 
-  // Skapa top_row-div och dess barn-element
   const topRow = document.createElement("div");
   topRow.id = 'top_row';
 
-  // Vänstra div: topRowLeftDiv
   const topRowLeftDiv = document.createElement("div");
   topRowLeftDiv.id = "top_row_left";
   const leftImage = document.createElement("img");
@@ -63,7 +62,6 @@ function loadScene1() {
   leftImage.className = "start_page_Image";
   topRowLeftDiv.appendChild(leftImage);
 
-  // Mittersta div: topRowCenterDiv
   const topRowCenterDiv = document.createElement("div");
   topRowCenterDiv.className = "top_row_center_div";
   topRowCenterDiv.id = "top_row_center";
@@ -73,45 +71,36 @@ function loadScene1() {
   centerImage.className = "start_page_Image";
   topRowCenterDiv.appendChild(centerImage);
 
-  // Högra div: topRowRightDiv med text
   const topRowRightDiv = document.createElement("div");
   topRowRightDiv.id = "top_row_right";
   const rightText = document.createElement("p");
   rightText.textContent = "Helvete! tänker du argt. Jag glömde ju ställa om klockan till vintertid! ... Du har nu låst ytterdörren och står inför ditt första val. Hissen eller trapporna?";
   topRowRightDiv.appendChild(rightText);
 
-  // Lägg till de tre divarna i topRow
   topRow.appendChild(topRowLeftDiv);
   topRow.appendChild(topRowCenterDiv);
   topRow.appendChild(topRowRightDiv);
-
-  // Lägg till topRow i containern
   container.appendChild(topRow);
 
-  // Skapa botten-rad för knapparna
   const bottomRowCenterDiv = document.createElement("div");
   bottomRowCenterDiv.id = 'bottomRowCenterDiv';
 
-  // Knapp 1: "Hissen"
   const button1 = document.createElement("button");
   button1.textContent = "Hissen";
   button1.className = "button1";
   button1.onclick = loadScene2;
 
-  // Knapp 2: "Trapporna"
   const button2 = document.createElement("button");
   button2.textContent = "Trapporna";
   button2.className = "button1";
   button2.onclick = loadSceneTrapporna;
 
-  // Lägg till båda knapparna i bottomRowCenterDiv
   bottomRowCenterDiv.appendChild(button1);
   bottomRowCenterDiv.appendChild(button2);
-
-  // Lägg till bottomRowCenterDiv i containern
   container.appendChild(bottomRowCenterDiv);
 }
 
+// Laddar andra scenen
 function loadScene2() {
   const container = document.getElementById("container");
   container.innerHTML = "";
@@ -119,7 +108,6 @@ function loadScene2() {
   const topRow = document.createElement("div");
   topRow.id = 'top_row';
 
-  // Vänstra div: topRowLeftDiv
   const topRowLeftDiv = document.createElement("div");
   topRowLeftDiv.id = "top_row_left";
   const leftImage = document.createElement("img");
@@ -128,75 +116,141 @@ function loadScene2() {
   leftImage.className = "start_page_Image";
   topRowLeftDiv.appendChild(leftImage);
 
-  // Mittersta div: topRowCenterDiv
   const topRowCenterDiv = document.createElement("div");
   topRowCenterDiv.className = "top_row_center_div";
   topRowCenterDiv.id = "top_row_center";
   const centerImage = document.createElement("img");
   centerImage.src = "assets/images/eas_left.jpg";
-  centerImage.alt = "Bild på dig själv när du funderar vilket val jag ska göra";
+  centerImage.alt = "Bild på dig själv när du funderar vilket val du ska göra";
   centerImage.className = "start_page_Image";
   topRowCenterDiv.appendChild(centerImage);
 
-  // Högra div: topRowRightDiv med text
   const topRowRightDiv = document.createElement("div");
   topRowRightDiv.id = "top_row_right";
   const rightText = document.createElement("p");
-  rightText.textContent = "Du står nu i trapphuset. Ska du gå tillbaka hem och hämta mobilen, tjuvåka med spårvagnen, eller helt enkelt börja gå?";
+
+  if (inventory.includes("mobil")) {
+    rightText.textContent = "Du har mobilen med dig nu. Ska du åka med spårvagnen, eller fortsätta gå?";
+  } else {
+    rightText.textContent = "Ska du gå tillbaka hem och hämta mobilen, tjuvåka med spårvagnen, eller börja gå?";
+  }
+  
   topRowRightDiv.appendChild(rightText);
 
-  // Lägg till de tre divarna i topRow
   topRow.appendChild(topRowLeftDiv);
   topRow.appendChild(topRowCenterDiv);
   topRow.appendChild(topRowRightDiv);
-
-  // Lägg topRow i containern
   container.appendChild(topRow);
 
-  // Botten-rad med tre knappar
   const bottomRowCenterDiv = document.createElement("div");
   bottomRowCenterDiv.id = 'bottomRowCenterDiv';
 
-  // Knapp 1: "Gå hem och hämta mobilen"
   const button1 = document.createElement("button");
-  button1.textContent = "Gå hem och hämta mobilen";
+  button1.textContent = inventory.includes("mobil") ? "Åk med spårvagnen" : "Gå hem och hämta mobilen";
   button1.className = "button1";
-  button1.onclick = loadGoBackHome;
+  button1.onclick = inventory.includes("mobil") ? loadScene3 : loadGoBackHome;
 
-  // Knapp 2: "Tjuvåk med spårvagn"
   const button2 = document.createElement("button");
-  button2.textContent = "Tjuvåk med spårvagn";
+  button2.textContent = inventory.includes("mobil") ? "Gå!" : "Tjuvåk med spårvagn";
   button2.className = "button1";
-  button2.onclick = loadRideTram;
+  button2.onclick = inventory.includes("mobil") ? loadWalk : loadGameOver;
 
-  // Knapp 3: "Gå!"
   const button3 = document.createElement("button");
   button3.textContent = "Gå!";
   button3.className = "button1";
   button3.onclick = loadWalk;
 
-  // Lägg till knapparna i bottomRowCenterDiv
-  bottomRowCenterDiv.appendChild(button1);
-  bottomRowCenterDiv.appendChild(button2);
-  bottomRowCenterDiv.appendChild(button3);
+  // Lägg till knappar beroende på om mobilen finns i inventory
+  if (inventory.includes("mobil")) {
+    bottomRowCenterDiv.appendChild(button1);
+    bottomRowCenterDiv.appendChild(button3);
+  } else {
+    bottomRowCenterDiv.appendChild(button1);
+    bottomRowCenterDiv.appendChild(button2);
+    bottomRowCenterDiv.appendChild(button3);
+  }
 
-  // Lägg till bottomRowCenterDiv i containern
   container.appendChild(bottomRowCenterDiv);
 }
 
-// Nya funktioner för scenövergångar
+// Lägg till mobil i inventory och gå tillbaka till scen 1
 function loadGoBackHome() {
-  alert("Du valde att gå hem och hämta mobilen.");
+  inventory.push("mobil");
+  loadScene1();
 }
 
-function loadRideTram() {
-  alert("Du valde att tjuvåka med spårvagnen.");
+// Laddar tredje scenen (likadan som första scenen)
+function loadScene3() {
+  loadScene1();
 }
 
+// Funktion för "Gå!"-valet
 function loadWalk() {
   alert("Du valde att gå till skolan.");
 }
 
+// Funktion för "Trapporna"
 function loadSceneTrapporna() {
   alert("Scenen för Trapporna kommer att läggas till här.");
+}
+
+
+function loadSceneTrapporna() {
+  const container = document.getElementById("container");
+  container.innerHTML = "";
+
+  // Skapa innehållet för scenen "Trapporna"
+  const topRow = document.createElement("div");
+  topRow.id = 'top_row';
+
+  const topRowCenterDiv = document.createElement("div");
+  topRowCenterDiv.className = "top_row_center_div";
+  topRowCenterDiv.id = "top_row_center";
+
+  const trappornaImage = document.createElement("img");
+  trappornaImage.src = "assets/images/trapporna.jpg"; // Ange rätt sökväg till bild
+  trappornaImage.alt = "Bild på trapporna";
+  trappornaImage.className = "start_page_Image";
+
+  topRowCenterDiv.appendChild(trappornaImage);
+
+  const trappornaText = document.createElement("p");
+  trappornaText.textContent = "Du har valt att ta trapporna. Lycka till!";
+  topRowCenterDiv.appendChild(trappornaText);
+
+  topRow.appendChild(topRowCenterDiv);
+  container.appendChild(topRow);
+
+  // Skapa botten-rad med en knapp för att gå vidare
+  const bottomRowCenterDiv = document.createElement("div");
+  bottomRowCenterDiv.id = 'bottomRowCenterDiv';
+
+  const button = document.createElement("button");
+  button.textContent = "Fortsätt";
+  button.className = "button1";
+  button.onclick = loadStartScene; // Exempel: kan ändras för att gå till en annan scen
+
+  bottomRowCenterDiv.appendChild(button);
+  container.appendChild(bottomRowCenterDiv);
+}
+
+// Funktion för biljettkontroll (GAME OVER)
+function loadGameOver() {
+  const container = document.getElementById("container");
+  container.innerHTML = "";
+
+  const gameOverText = document.createElement("h1");
+  gameOverText.textContent = "GAME OVER";
+  
+  const gameOverDescription = document.createElement("p");
+  gameOverDescription.textContent = "Du åkte fast i en biljettkontroll. Tryck på knappen nedanför för att komma till startsidan.";
+  
+  const buttonRestart = document.createElement("button");
+  buttonRestart.textContent = "Till startsidan";
+  buttonRestart.className = "button1";
+  buttonRestart.onclick = loadStartScene;
+
+  container.appendChild(gameOverText);
+  container.appendChild(gameOverDescription);
+  container.appendChild(buttonRestart);
 }
