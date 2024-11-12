@@ -74,7 +74,7 @@ function loadScene1() {
   const topRowRightDiv = document.createElement("div");
   topRowRightDiv.id = "top_row_right";
   const rightText = document.createElement("p");
-  rightText.textContent = "Helvete! tänker du argt. Jag glömde ju ställa om klockan till vintertid! ... Du har nu låst ytterdörren och står inför ditt första val. Hissen eller trapporna?";
+  rightText.textContent = "Helvete! tänker du argt. Jag glömde ju ställa om klockan till vintertid! Som en studsboll studsar du upp ur sängen och springer ut i köket. Slänger i två brödskivor i brödrosten och sen springa vidare till badrummet. Borsta tänderna och på med lite deo. Springer ut till köket igen och tar första mackan. Sen springer du in i sovrummet och klär på dig för att sen springa ut i köket igen och ta den sista mackan. Nu var det klart. Packa ryggsäcken och sen på med jacka och skor. Du har nu låst ytterdörren och står inför ditt första val. Hissen eller trapporna?";
   topRowRightDiv.appendChild(rightText);
 
   topRow.appendChild(topRowLeftDiv);
