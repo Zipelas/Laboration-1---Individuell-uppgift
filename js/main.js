@@ -1,13 +1,12 @@
-// Array för att hålla koll på objekt spelaren har med sig
-const inventory = [];
+let inventory = [];
 
-// Laddar startscenen
 window.addEventListener("DOMContentLoaded", main);
 
 function main() {
   loadStartScene();
 }
 
+// Startscenen
 function loadStartScene() {
   const container = document.getElementById("container");
   container.innerHTML = "";
@@ -23,7 +22,6 @@ function loadStartScene() {
   startPageImage.src = "assets/images/karta_startsida.jpg";
   startPageImage.alt = "Karta för startsidan";
   startPageImage.className = "start_page_Image";
-
   topRowCenterDiv.appendChild(startPageImage);
 
   const startText = document.createElement("p");
@@ -46,7 +44,7 @@ function loadStartScene() {
   container.appendChild(bottomRowCenterDiv);
 }
 
-// Laddar första scenen
+// Scen 1
 function loadScene1() {
   const container = document.getElementById("container");
   container.innerHTML = "";
@@ -74,7 +72,7 @@ function loadScene1() {
   const topRowRightDiv = document.createElement("div");
   topRowRightDiv.id = "top_row_right";
   const rightText = document.createElement("p");
-  rightText.textContent = "Helvete! tänker du argt. Jag glömde ju ställa om klockan till vintertid! Som en studsboll studsar du upp ur sängen och springer ut i köket. Slänger i två brödskivor i brödrosten och sen springa vidare till badrummet. Borsta tänderna och på med lite deo. Springer ut till köket igen och tar första mackan. Sen springer du in i sovrummet och klär på dig för att sen springa ut i köket igen och ta den sista mackan. Nu var det klart. Packa ryggsäcken och sen på med jacka och skor. Du har nu låst ytterdörren och står inför ditt första val. Hissen eller trapporna?";
+  rightText.textContent = "Du har glömt ställa om klockan och nu är du sen! Hissen eller trapporna?";
   topRowRightDiv.appendChild(rightText);
 
   topRow.appendChild(topRowLeftDiv);
@@ -100,7 +98,44 @@ function loadScene1() {
   container.appendChild(bottomRowCenterDiv);
 }
 
-// Laddar andra scenen
+// Scen för "Trapporna"
+function loadSceneTrapporna() {
+  const container = document.getElementById("container");
+  container.innerHTML = "";
+
+  const topRow = document.createElement("div");
+  topRow.id = 'top_row';
+
+  const topRowCenterDiv = document.createElement("div");
+  topRowCenterDiv.className = "top_row_center_div";
+  topRowCenterDiv.id = "top_row_center";
+
+  const trappornaImage = document.createElement("img");
+  trappornaImage.src = "assets/images/trapporna.jpg";
+  trappornaImage.alt = "Bild på trapporna";
+  trappornaImage.className = "start_page_Image";
+  topRowCenterDiv.appendChild(trappornaImage);
+
+  const trappornaText = document.createElement("p");
+  trappornaText.textContent = "Du har valt att ta trapporna. Lycka till!";
+  topRowCenterDiv.appendChild(trappornaText);
+
+  topRow.appendChild(topRowCenterDiv);
+  container.appendChild(topRow);
+
+  const bottomRowCenterDiv = document.createElement("div");
+  bottomRowCenterDiv.id = 'bottomRowCenterDiv';
+
+  const button = document.createElement("button");
+  button.textContent = "Fortsätt";
+  button.className = "button1";
+  button.onclick = loadStartScene;
+
+  bottomRowCenterDiv.appendChild(button);
+  container.appendChild(bottomRowCenterDiv);
+}
+
+// Scen 2
 function loadScene2() {
   const container = document.getElementById("container");
   container.innerHTML = "";
@@ -126,12 +161,11 @@ function loadScene2() {
   centerImage.className = "start_page_Image";
   topRowCenterDiv.appendChild(centerImage);
 
-  // Om mobilen är i inventory, lägg till en liten bild på mobilen
   if (inventory.includes("mobil")) {
     const mobileImage = document.createElement("img");
     mobileImage.src = "assets/images/mobil.webp";
     mobileImage.alt = "Liten bild på mobil";
-    mobileImage.className = "small_item_image"; // Lägg till CSS för att styra storlek och position
+    mobileImage.className = "small_item_image";
     topRowCenterDiv.appendChild(mobileImage);
   }
 
@@ -140,11 +174,10 @@ function loadScene2() {
   const rightText = document.createElement("p");
 
   if (inventory.includes("mobil")) {
-    rightText.textContent = "Du har mobilen med dig nu. Ska du åka med spårvagnen, eller fortsätta gå?";
+    rightText.textContent = "Du har mobilen med dig. Ska du åka med spårvagnen, eller fortsätta gå?";
   } else {
-    rightText.textContent = "Ska du gå tillbaka hem och hämta mobilen, tjuvåka med spårvagnen, eller börja gå?";
+    rightText.textContent = "Du har glömt mobilen! Gå hem, tjuvåk eller gå till skolan?";
   }
-
   topRowRightDiv.appendChild(rightText);
 
   topRow.appendChild(topRowLeftDiv);
@@ -178,36 +211,20 @@ function loadScene2() {
     bottomRowCenterDiv.appendChild(button2);
     bottomRowCenterDiv.appendChild(button3);
   }
-
   container.appendChild(bottomRowCenterDiv);
 }
-// Lägg till mobil i inventory och gå tillbaka till scen 1
+
+// Scen för att gå hem och hämta mobilen
 function loadGoBackHome() {
   inventory.push("mobil");
   loadScene1();
 }
 
-// Laddar tredje scenen (likadan som första scenen)
-function loadScene3() {
-  loadScene1();
-}
-
-// Funktion för "Gå!"-valet
-function loadWalk() {
-  alert("Du valde att gå till skolan.");
-}
-
-// Funktion för "Trapporna"
-function loadSceneTrapporna() {
-  alert("Scenen för Trapporna kommer att läggas till här.");
-}
-
-
-function loadSceneTrapporna() {
+// Scen för Game Over
+function loadGameOver() {
   const container = document.getElementById("container");
   container.innerHTML = "";
 
-  // Skapa innehållet för scenen "Trapporna"
   const topRow = document.createElement("div");
   topRow.id = 'top_row';
 
@@ -215,50 +232,38 @@ function loadSceneTrapporna() {
   topRowCenterDiv.className = "top_row_center_div";
   topRowCenterDiv.id = "top_row_center";
 
-  const trappornaImage = document.createElement("img");
-  trappornaImage.src = "assets/images/trapporna.jpg"; // Ange rätt sökväg till bild
-  trappornaImage.alt = "Bild på trapporna";
-  trappornaImage.className = "start_page_Image";
+  const gameOverImage = document.createElement("img");
+  gameOverImage.src = "assets/images/kontrollant.jpg";
+  gameOverImage.alt = "Bild på en kontrollant som har tagit dig";
+  gameOverImage.className = "start_page_Image";
+  topRowCenterDiv.appendChild(gameOverImage);
 
-  topRowCenterDiv.appendChild(trappornaImage);
-
-  const trappornaText = document.createElement("p");
-  trappornaText.textContent = "Du har valt att ta trapporna. Lycka till!";
-  topRowCenterDiv.appendChild(trappornaText);
+  const gameOverText = document.createElement("p");
+  gameOverText.textContent = "Kontrollanten tog dig! Spelet är slut.";
+  topRowCenterDiv.appendChild(gameOverText);
 
   topRow.appendChild(topRowCenterDiv);
   container.appendChild(topRow);
 
-  // Skapa botten-rad med en knapp för att gå vidare
   const bottomRowCenterDiv = document.createElement("div");
   bottomRowCenterDiv.id = 'bottomRowCenterDiv';
 
   const button = document.createElement("button");
-  button.textContent = "Fortsätt";
+  button.textContent = "Börja om";
   button.className = "button1";
-  button.onclick = loadStartScene; // Exempel: kan ändras för att gå till en annan scen
+  button.onclick = loadStartScene;
 
   bottomRowCenterDiv.appendChild(button);
   container.appendChild(bottomRowCenterDiv);
 }
 
-// Funktion för biljettkontroll (GAME OVER)
-function loadGameOver() {
-  const container = document.getElementById("container");
-  container.innerHTML = "";
+// Scen 3
+function loadScene3() {
+  alert("Scen 3 är inte implementerad än.");
+}
 
-  const gameOverText = document.createElement("h1");
-  gameOverText.textContent = "GAME OVER";
-  
-  const gameOverDescription = document.createElement("p");
-  gameOverDescription.textContent = "Du åkte fast i en biljettkontroll. Tryck på knappen nedanför för att komma till startsidan.";
-  
-  const buttonRestart = document.createElement("button");
-  buttonRestart.textContent = "Till startsidan";
-  buttonRestart.className = "button1";
-  buttonRestart.onclick = loadStartScene;
-
-  container.appendChild(gameOverText);
-  container.appendChild(gameOverDescription);
-  container.appendChild(buttonRestart);
+// Scen för att gå till skolan
+function loadWalk() {
+  alert("Du valde att gå till skolan.");
+  loadScene3();
 }
