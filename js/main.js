@@ -383,22 +383,19 @@ function loadScene4() {
   container.appendChild(bottomRowCenterDiv);
 }
 
-// Scen 5 - Modifierad kopia av Scen 1
 function loadScene5() {
-  inventory.push("beer");
-  inventory.push("gammeldansk");
-
   const container = document.getElementById("container");
   container.innerHTML = "";
 
   const topRow = document.createElement("div");
   topRow.id = 'top_row';
 
+  // Vänstra delen med "tullen.jpg"-bilden
   const topRowLeftDiv = document.createElement("div");
   topRowLeftDiv.id = "top_row_left";
   const leftImage = document.createElement("img");
-  leftImage.src = "assets/images/tullen.jpg";
-  leftImage.alt = "Bild på tullen";
+  leftImage.src = "assets/images/tullen.jpg"; // Ange rätt sökväg till tullen.jpg
+  leftImage.alt = "Bild på Tullen";
   leftImage.className = "start_page_Image";
   topRowLeftDiv.appendChild(leftImage);
 
@@ -406,32 +403,24 @@ function loadScene5() {
   topRowCenterDiv.className = "top_row_center_div";
   topRowCenterDiv.id = "top_row_center";
 
-  // Visa bilder i inventory (mobil, cykel, beer, gammeldansk)
-  if (inventory.includes("mobil")) {
-    const mobileImage = document.createElement("img");
-    mobileImage.src = "assets/images/mobil.webp";
-    mobileImage.alt = "Liten bild på mobil";
-    mobileImage.className = "small_item_image";
-    topRowCenterDiv.appendChild(mobileImage);
-  }
-
+  // Visa items i inventory: "beer.jpg" och "gammeldansk.jpg" tillsammans med eventuella andra items
   if (inventory.includes("cykel")) {
-    const cykelImage = document.createElement("img");
-    cykelImage.src = "assets/images/cykel.png";
-    cykelImage.alt = "Liten bild på cykel";
-    cykelImage.className = "small_item_image";
-    topRowCenterDiv.appendChild(cykelImage);
+    const bikeImage = document.createElement("img");
+    bikeImage.src = "assets/images/cykel.png";
+    bikeImage.alt = "Bild på cykel";
+    bikeImage.className = "small_item_image";
+    topRowCenterDiv.appendChild(bikeImage);
   }
 
   const beerImage = document.createElement("img");
   beerImage.src = "assets/images/beer.jpg";
-  beerImage.alt = "Liten bild på öl";
+  beerImage.alt = "Bild på öl";
   beerImage.className = "small_item_image";
   topRowCenterDiv.appendChild(beerImage);
 
   const gammeldanskImage = document.createElement("img");
   gammeldanskImage.src = "assets/images/gammeldansk.jpg";
-  gammeldanskImage.alt = "Liten bild på Gammeldansk";
+  gammeldanskImage.alt = "Bild på Gammeldansk";
   gammeldanskImage.className = "small_item_image";
   topRowCenterDiv.appendChild(gammeldanskImage);
 
@@ -439,15 +428,21 @@ function loadScene5() {
   topRow.appendChild(topRowCenterDiv);
   container.appendChild(topRow);
 
+  // Ändra texten till den nya texten
+  const congratulatoryText = document.createElement("p");
+  congratulatoryText.textContent = "Stort grattis!!! Du har klarat provet och kan nu avnjuta en stor kall öl och en liten gammeldansk på Tullen. Nu kan du njuta av en lugn helg utan pluggande...tills det är dags igen. School mission kommer komma tillbaka i ny tappning.";
+  topRowCenterDiv.appendChild(congratulatoryText);
+
+  // Botten-rad med en enda knapp
   const bottomRowCenterDiv = document.createElement("div");
   bottomRowCenterDiv.id = 'bottomRowCenterDiv';
 
-  const button1 = document.createElement("button");
-  button1.textContent = "Grattis!!! Gå till startsidan";
-  button1.className = "button1";
-  button1.onclick = loadStartScene;
+  const restartButton = document.createElement("button");
+  restartButton.textContent = "Grattis!!! Gå till startsidan";
+  restartButton.className = "button1";
+  restartButton.onclick = loadStartScene;
 
-  bottomRowCenterDiv.appendChild(button1);
+  bottomRowCenterDiv.appendChild(restartButton);
   container.appendChild(bottomRowCenterDiv);
 }
 
