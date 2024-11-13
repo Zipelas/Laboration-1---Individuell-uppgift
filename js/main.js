@@ -257,10 +257,200 @@ function loadGameOver() {
   container.appendChild(bottomRowCenterDiv);
 }
 
-// Scen 3
+// Scen 3 - Kopia av Scen 1 med modifieringar
 function loadScene3() {
-  alert("Scen 3 är inte implementerad än.");
+  const container = document.getElementById("container");
+  container.innerHTML = "";
+
+  const topRow = document.createElement("div");
+  topRow.id = 'top_row';
+
+  const topRowLeftDiv = document.createElement("div");
+  topRowLeftDiv.id = "top_row_left";
+  const leftImage = document.createElement("img");
+  leftImage.src = "assets/images/ullevi.jpg";
+  leftImage.alt = "Bild på Ullevi";
+  leftImage.className = "start_page_Image";
+  topRowLeftDiv.appendChild(leftImage);
+
+  const topRowCenterDiv = document.createElement("div");
+  topRowCenterDiv.className = "top_row_center_div";
+  topRowCenterDiv.id = "top_row_center";
+  const centerImage = document.createElement("img");
+  centerImage.src = "assets/images/eas_right.jpg";
+  centerImage.alt = "Bild som visar väg till skolan";
+  centerImage.className = "start_page_Image";
+  topRowCenterDiv.appendChild(centerImage);
+
+  const topRowRightDiv = document.createElement("div");
+  topRowRightDiv.id = "top_row_right";
+  const rightText = document.createElement("p");
+  rightText.textContent = "Du ser en cykel. Vad vill du göra?";
+  topRowRightDiv.appendChild(rightText);
+
+  topRow.appendChild(topRowLeftDiv);
+  topRow.appendChild(topRowCenterDiv);
+  topRow.appendChild(topRowRightDiv);
+  container.appendChild(topRow);
+
+  const bottomRowCenterDiv = document.createElement("div");
+  bottomRowCenterDiv.id = 'bottomRowCenterDiv';
+
+  const button1 = document.createElement("button");
+  button1.textContent = "Fråga om du får låna cykeln";
+  button1.className = "button1";
+  button1.onclick = loadScene4;
+
+  const button2 = document.createElement("button");
+  button2.textContent = "Sno cykeln";
+  button2.className = "button1";
+  button2.onclick = loadGameOver;
+
+  bottomRowCenterDiv.appendChild(button1);
+  bottomRowCenterDiv.appendChild(button2);
+  container.appendChild(bottomRowCenterDiv);
 }
+
+// Scen 4 - Modifierad kopia av Scen 1
+function loadScene4() {
+  inventory.push("cykel");
+
+  const container = document.getElementById("container");
+  container.innerHTML = "";
+
+  const topRow = document.createElement("div");
+  topRow.id = 'top_row';
+
+  const topRowLeftDiv = document.createElement("div");
+  topRowLeftDiv.id = "top_row_left";
+  const leftImage = document.createElement("img");
+  leftImage.src = "assets/images/skolan.jpg";
+  leftImage.alt = "Bild på skolan";
+  leftImage.className = "start_page_Image";
+  topRowLeftDiv.appendChild(leftImage);
+
+  const topRowCenterDiv = document.createElement("div");
+  topRowCenterDiv.className = "top_row_center_div";
+  topRowCenterDiv.id = "top_row_center";
+  const centerImage = document.createElement("img");
+  centerImage.src = "assets/images/eas_left.jpg";
+  centerImage.alt = "Bild på väg till skolan";
+  centerImage.className = "start_page_Image";
+  topRowCenterDiv.appendChild(centerImage);
+
+  if (inventory.includes("cykel")) {
+    const cykelImage = document.createElement("img");
+    cykelImage.src = "assets/images/cykel.png";
+    cykelImage.alt = "Liten bild på cykel";
+    cykelImage.className = "small_item_image";
+    topRowCenterDiv.appendChild(cykelImage);
+  }
+  
+  if (inventory.includes("mobil")) {
+    const mobileImage = document.createElement("img");
+    mobileImage.src = "assets/images/mobil.webp";
+    mobileImage.alt = "Liten bild på mobil";
+    mobileImage.className = "small_item_image";
+    topRowCenterDiv.appendChild(mobileImage);
+  }
+
+  const topRowRightDiv = document.createElement("div");
+  topRowRightDiv.id = "top_row_right";
+  const rightText = document.createElement("p");
+  rightText.textContent = "Du är nästan framme! Hur vill du göra provet?";
+  topRowRightDiv.appendChild(rightText);
+
+  topRow.appendChild(topRowLeftDiv);
+  topRow.appendChild(topRowCenterDiv);
+  topRow.appendChild(topRowRightDiv);
+  container.appendChild(topRow);
+
+  const bottomRowCenterDiv = document.createElement("div");
+  bottomRowCenterDiv.id = 'bottomRowCenterDiv';
+
+  const button1 = document.createElement("button");
+  button1.textContent = "Gör provet utan chatGPT";
+  button1.className = "button1";
+  button1.onclick = loadScene5;
+
+  const button2 = document.createElement("button");
+  button2.textContent = "Gör provet med chatGPT";
+  button2.className = "button1";
+  button2.onclick = loadGameOver;
+
+  bottomRowCenterDiv.appendChild(button1);
+  bottomRowCenterDiv.appendChild(button2);
+  container.appendChild(bottomRowCenterDiv);
+}
+
+// Scen 5 - Modifierad kopia av Scen 1
+function loadScene5() {
+  inventory.push("beer");
+  inventory.push("gammeldansk");
+
+  const container = document.getElementById("container");
+  container.innerHTML = "";
+
+  const topRow = document.createElement("div");
+  topRow.id = 'top_row';
+
+  const topRowLeftDiv = document.createElement("div");
+  topRowLeftDiv.id = "top_row_left";
+  const leftImage = document.createElement("img");
+  leftImage.src = "assets/images/tullen.jpg";
+  leftImage.alt = "Bild på tullen";
+  leftImage.className = "start_page_Image";
+  topRowLeftDiv.appendChild(leftImage);
+
+  const topRowCenterDiv = document.createElement("div");
+  topRowCenterDiv.className = "top_row_center_div";
+  topRowCenterDiv.id = "top_row_center";
+
+  // Visa bilder i inventory (mobil, cykel, beer, gammeldansk)
+  if (inventory.includes("mobil")) {
+    const mobileImage = document.createElement("img");
+    mobileImage.src = "assets/images/mobil.webp";
+    mobileImage.alt = "Liten bild på mobil";
+    mobileImage.className = "small_item_image";
+    topRowCenterDiv.appendChild(mobileImage);
+  }
+
+  if (inventory.includes("cykel")) {
+    const cykelImage = document.createElement("img");
+    cykelImage.src = "assets/images/cykel.png";
+    cykelImage.alt = "Liten bild på cykel";
+    cykelImage.className = "small_item_image";
+    topRowCenterDiv.appendChild(cykelImage);
+  }
+
+  const beerImage = document.createElement("img");
+  beerImage.src = "assets/images/beer.jpg";
+  beerImage.alt = "Liten bild på öl";
+  beerImage.className = "small_item_image";
+  topRowCenterDiv.appendChild(beerImage);
+
+  const gammeldanskImage = document.createElement("img");
+  gammeldanskImage.src = "assets/images/gammeldansk.jpg";
+  gammeldanskImage.alt = "Liten bild på Gammeldansk";
+  gammeldanskImage.className = "small_item_image";
+  topRowCenterDiv.appendChild(gammeldanskImage);
+
+  topRow.appendChild(topRowLeftDiv);
+  topRow.appendChild(topRowCenterDiv);
+  container.appendChild(topRow);
+
+  const bottomRowCenterDiv = document.createElement("div");
+  bottomRowCenterDiv.id = 'bottomRowCenterDiv';
+
+  const button1 = document.createElement("button");
+  button1.textContent = "Grattis!!! Gå till startsidan";
+  button1.className = "button1";
+  button1.onclick = loadStartScene;
+
+  bottomRowCenterDiv.appendChild(button1);
+  container.appendChild(bottomRowCenterDiv);
+}
+
 
 // Scen för att gå till skolan
 function loadWalk() {
