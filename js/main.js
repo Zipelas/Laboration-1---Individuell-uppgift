@@ -37,7 +37,6 @@ function loadStartScene() {
   const button1 = document.createElement("button");
   button1.textContent = "Starta uppdrag!";
   button1.className = "button1";
-  button1.id = "button1";
   button1.onclick = loadScene1;
 
   bottomRowCenterDiv.appendChild(button1);
@@ -91,7 +90,7 @@ function loadScene1() {
   const button2 = document.createElement("button");
   button2.textContent = "Trapporna";
   button2.className = "button1";
-  button2.onclick = loadSceneTrapporna;
+  button2.onclick = loadGameOver;
 
   bottomRowCenterDiv.appendChild(button1);
   bottomRowCenterDiv.appendChild(button2);
@@ -154,7 +153,6 @@ function loadScene2() {
   const topRowCenterDiv = document.createElement("div");
   topRowCenterDiv.className = "top_row_center_div";
   topRowCenterDiv.id = "top_row_center";
-
   const centerImage = document.createElement("img");
   centerImage.src = "assets/images/eas_left.jpg";
   centerImage.alt = "Bild på dig själv när du funderar vilket val du ska göra";
@@ -196,12 +194,12 @@ function loadScene2() {
   const button2 = document.createElement("button");
   button2.textContent = inventory.includes("mobil") ? "Gå!" : "Tjuvåk med spårvagnen";
   button2.className = "button1";
-  button2.onclick = inventory.includes("mobil") ? loadWalk : loadGameOver;
+  button2.onclick = inventory.includes("mobil") ? loadScene3 : loadGameOver2;
 
   const button3 = document.createElement("button");
   button3.textContent = "Gå!";
   button3.className = "button1";
-  button3.onclick = loadWalk;
+  button3.onclick = loadScene3;
 
   if (inventory.includes("mobil")) {
     bottomRowCenterDiv.appendChild(button1);
@@ -220,7 +218,7 @@ function loadGoBackHome() {
   loadScene1();
 }
 
-// Scen för Game Over
+// Game Over-scen
 function loadGameOver() {
   const container = document.getElementById("container");
   container.innerHTML = "";
@@ -233,13 +231,50 @@ function loadGameOver() {
   topRowCenterDiv.id = "top_row_center";
 
   const gameOverImage = document.createElement("img");
-  gameOverImage.src = "assets/images/kontrollant.jpg";
-  gameOverImage.alt = "Bild på en kontrollant som har tagit dig";
+  gameOverImage.src = "assets/images/falling.jpg";
+  gameOverImage.alt = "Bild på att du ramlade";
   gameOverImage.className = "start_page_Image";
   topRowCenterDiv.appendChild(gameOverImage);
 
   const gameOverText = document.createElement("p");
-  gameOverText.textContent = "Kontrollanten tog dig! Spelet är slut.";
+  gameOverText.textContent = "Aj då! Du ramlade när du sprang i trapporna för att du var stressad. Nu kan du inte göra provet för att du måste till sjukhuset.";
+  topRowCenterDiv.appendChild(gameOverText);
+
+  topRow.appendChild(topRowCenterDiv);
+  container.appendChild(topRow);
+
+  const bottomRowCenterDiv = document.createElement("div");
+  bottomRowCenterDiv.id = 'bottomRowCenterDiv';
+
+  const button = document.createElement("button");
+  button.textContent = "Börja om";
+  button.className = "button1";
+  button.onclick = loadStartScene;
+
+  bottomRowCenterDiv.appendChild(button);
+  container.appendChild(bottomRowCenterDiv);
+}
+
+// Scen för Game Over när man tjuvåker
+function loadGameOver2() {
+  const container = document.getElementById("container");
+  container.innerHTML = "";
+
+  const topRow = document.createElement("div");
+  topRow.id = 'top_row';
+
+  const topRowCenterDiv = document.createElement("div");
+  topRowCenterDiv.className = "top_row_center_div";
+  topRowCenterDiv.id = "top_row_center";
+
+  const gameOverImage = document.createElement("img");
+  gameOverImage.src = "assets/images/biljettkontroll.webp";
+  gameOverImage.alt = "Bild på biljettkontroll";
+  gameOverImage.className = "start_page_Image";
+  topRowCenterDiv.appendChild(gameOverImage);
+
+  const gameOverText = document.createElement("p");
+  gameOverText.textContent = "Tyvärr så åkte du fast i en biljettkontroll. Tryck på knappen nedför för att börja om.";
   topRowCenterDiv.appendChild(gameOverText);
 
   topRow.appendChild(topRowCenterDiv);
@@ -446,6 +481,47 @@ function loadScene5() {
   container.appendChild(bottomRowCenterDiv);
 }
 
+// loadScene6
+function loadScene6() {
+  // Rensa scenen först
+  clearScene();
+
+  // Lägg till bild "trapporna.jpg" i scenen
+  const image1 = document.createElement("img");
+  image1.src = "trapporna.jpg";
+  document.body.appendChild(image1);
+
+  // Lägg till bild "granne.jpg" i scenen
+  const image2 = document.createElement("img");
+  image2.src = "granne.jpg";
+  document.body.appendChild(image2);
+
+  // Skapa knappen som leder tillbaka till loadScene1, om det behövs
+  const elevatorButton = document.createElement("button");
+  elevatorButton.innerText = "Tillbaka till Hissen";
+  elevatorButton.onclick = loadScene1;
+  document.body.appendChild(elevatorButton);
+}
+
+function helpNeighborWithPhone() {
+  // Funktion för att hantera valet "Hjälp grannen med mobilen"
+  const mainContainer = document.getElementById('main-container');
+  mainContainer.innerHTML = `
+      <img src="granne.jpg" alt="Granne">
+      <p>Du hjälper grannen med mobilen.</p>
+      <button onclick="loadScene1()">Tillbaka till början</button>
+  `;
+}
+
+function helpNeighborAfterSchool() {
+  // Funktion för att hantera valet "Hjälp grannen efter skolan"
+  const mainContainer = document.getElementById('main-container');
+  mainContainer.innerHTML = `
+      <img src="granne.jpg" alt="Granne">
+      <p>Du bestämmer dig för att hjälpa grannen efter skolan.</p>
+      <button onclick="loadScene1()">Tillbaka till början</button>
+  `;
+}
 
 // Scen för att gå till skolan
 function loadWalk() {
