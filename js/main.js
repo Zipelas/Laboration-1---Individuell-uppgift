@@ -55,7 +55,7 @@ function loadScene1() {
   topRowLeftDiv.id = "top_row_left";
   const leftImage = document.createElement("img");
   leftImage.src = "assets/images/overslept.jpg";
-  leftImage.alt = "Bild på karta för scenen där du har försovit dig";
+  leftImage.alt = "Bild på en man som vaknar upp när han har försovit sig";
   leftImage.className = "start_page_Image";
   topRowLeftDiv.appendChild(leftImage);
 
@@ -64,14 +64,14 @@ function loadScene1() {
   topRowCenterDiv.id = "top_row_center";
   const centerImage = document.createElement("img");
   centerImage.src = "assets/images/hissen.jpg";
-  centerImage.alt = "Karta för hissen";
+  centerImage.alt = "Bild på en svale med hiss och trappor.";
   centerImage.className = "start_page_Image";
   topRowCenterDiv.appendChild(centerImage);
 
   const topRowRightDiv = document.createElement("div");
   topRowRightDiv.id = "top_row_right";
   const rightText = document.createElement("p");
-  rightText.textContent = "Du har glömt ställa om klockan och nu är du sen! Hissen eller trapporna?";
+  rightText.textContent = "Helvete! tänker du argt. Jag glömde ju ställa om klockan till vintertid! Som en studsboll studsar du upp ur sängen och springer ut i köket. Slänger i två brödskivor i brödrosten och sen springa vidare till badrummet. Borsta tänderna och på med lite deo. Springer ut till köket igen och tar första mackan. Sen springer du in i sovrummet och klär på dig för att sen springa ut i köket igen och ta den sista mackan. Nu var det klart. Packa ryggsäcken och sen på med jacka och skor. Du har nu låst ytterdörren och står inför ditt första val. Hissen eller trapporna?";
   topRowRightDiv.appendChild(rightText);
 
   topRow.appendChild(topRowLeftDiv);
@@ -329,6 +329,43 @@ function loadGameOver3() {
   container.appendChild(bottomRowCenterDiv);
 }
 
+// Scen för Game Over när man använder ChatGPT
+function loadGameOver4() {
+  const container = document.getElementById("container");
+  container.innerHTML = "";
+
+  const topRow = document.createElement("div");
+  topRow.id = 'top_row';
+
+  const topRowCenterDiv = document.createElement("div");
+  topRowCenterDiv.className = "top_row_center_div";
+  topRowCenterDiv.id = "top_row_center";
+
+  const gameOverImage = document.createElement("img");
+  gameOverImage.src = "assets/images/teacher.jpg";
+  gameOverImage.alt = "Bild på läraren";
+  gameOverImage.className = "start_page_Image";
+  topRowCenterDiv.appendChild(gameOverImage);
+
+  const gameOverText = document.createElement("p");
+  gameOverText.textContent = "Busted!!! Du har blivit tagen av Davids långa arm. Det blir ingen pilsner och gammeldansk för din del.";
+  topRowCenterDiv.appendChild(gameOverText);
+
+  topRow.appendChild(topRowCenterDiv);
+  container.appendChild(topRow);
+
+  const bottomRowCenterDiv = document.createElement("div");
+  bottomRowCenterDiv.id = 'bottomRowCenterDiv';
+
+  const button = document.createElement("button");
+  button.textContent = "Börja om";
+  button.className = "button1";
+  button.onclick = loadStartScene;
+
+  bottomRowCenterDiv.appendChild(button);
+  container.appendChild(bottomRowCenterDiv);
+}
+
 // Scen 3
 function loadScene3() {
   const container = document.getElementById("container");
@@ -383,7 +420,7 @@ function loadScene3() {
   container.appendChild(bottomRowCenterDiv);
 }
 
-// Scen 4 - Modifierad kopia av Scen 1
+// Scen 4
 function loadScene4() {
   inventory.push("cykel");
 
@@ -448,7 +485,7 @@ function loadScene4() {
   const button2 = document.createElement("button");
   button2.textContent = "Gör provet med chatGPT";
   button2.className = "button1";
-  button2.onclick = loadGameOver;
+  button2.onclick = loadGameOver4;
 
   bottomRowCenterDiv.appendChild(button1);
   bottomRowCenterDiv.appendChild(button2);
