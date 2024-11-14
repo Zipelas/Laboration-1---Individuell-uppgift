@@ -97,43 +97,6 @@ function loadScene1() {
   container.appendChild(bottomRowCenterDiv);
 }
 
-// Scen för "Trapporna"
-function loadSceneTrapporna() {
-  const container = document.getElementById("container");
-  container.innerHTML = "";
-
-  const topRow = document.createElement("div");
-  topRow.id = 'top_row';
-
-  const topRowCenterDiv = document.createElement("div");
-  topRowCenterDiv.className = "top_row_center_div";
-  topRowCenterDiv.id = "top_row_center";
-
-  const trappornaImage = document.createElement("img");
-  trappornaImage.src = "assets/images/trapporna.jpg";
-  trappornaImage.alt = "Bild på trapporna";
-  trappornaImage.className = "start_page_Image";
-  topRowCenterDiv.appendChild(trappornaImage);
-
-  const trappornaText = document.createElement("p");
-  trappornaText.textContent = "Du har valt att ta trapporna. Lycka till!";
-  topRowCenterDiv.appendChild(trappornaText);
-
-  topRow.appendChild(topRowCenterDiv);
-  container.appendChild(topRow);
-
-  const bottomRowCenterDiv = document.createElement("div");
-  bottomRowCenterDiv.id = 'bottomRowCenterDiv';
-
-  const button = document.createElement("button");
-  button.textContent = "Fortsätt";
-  button.className = "button1";
-  button.onclick = loadStartScene;
-
-  bottomRowCenterDiv.appendChild(button);
-  container.appendChild(bottomRowCenterDiv);
-}
-
 // Scen 2
 function loadScene2() {
   const container = document.getElementById("container");
@@ -172,9 +135,9 @@ function loadScene2() {
   const rightText = document.createElement("p");
 
   if (inventory.includes("mobil")) {
-    rightText.textContent = "Du har mobilen med dig. Ska du åka med spårvagnen, eller fortsätta gå?";
+    rightText.textContent = "Vad bra.Nu har du mobilen med så att du kan köpa en biljett och inte åka fast i en biljettkontroll. Ska du åka med spårvagnen, eller fortsätta gå?";
   } else {
-    rightText.textContent = "Du har glömt mobilen! Gå hem, tjuvåk eller gå till skolan?";
+    rightText.textContent = "Du står vid Scandinaviums hållplats och väntar på spårvagnen. Gud vad sen jag är. tänker du. Hoppas att jag inte missar tentan. Plötsligt kommer du på. FAAAN, jag glömde ju mobilen! Nu kan jag inte betala för biljetten. Vad gör du nu? Går hem och hämta mobilen, tjuvåk med spårvagnen eller går du till skolan?";
   }
   topRowRightDiv.appendChild(rightText);
 
@@ -394,7 +357,7 @@ function loadScene3() {
   const topRowRightDiv = document.createElement("div");
   topRowRightDiv.id = "top_row_right";
   const rightText = document.createElement("p");
-  rightText.textContent = "Du ser en cykel. Vad vill du göra?";
+  rightText.textContent = "I hög fart går du mot skolan. Solen skiner och allt är bra. Plötsligt när du har gått förbi Ullevi så blir du påkörd av en cyklist som kommer i en hög fart. Du tar dig upp på fötterna igen och står inför valet. Ska du sno cykeln eller ska du be snällt om att få låna cykeln för du har ett prov?";
   topRowRightDiv.appendChild(rightText);
 
   topRow.appendChild(topRowLeftDiv);
@@ -466,7 +429,7 @@ function loadScene4() {
   const topRowRightDiv = document.createElement("div");
   topRowRightDiv.id = "top_row_right";
   const rightText = document.createElement("p");
-  rightText.textContent = "Du är nästan framme! Hur vill du göra provet?";
+  rightText.textContent = "Dags för tenta och dags att se om du är lika grym som David. Hur väljer du att gå vidare? Ska du gör tentan med eller utan chatGPT?";
   topRowRightDiv.appendChild(rightText);
 
   topRow.appendChild(topRowLeftDiv);
@@ -503,7 +466,7 @@ function loadScene5() {
   const topRowLeftDiv = document.createElement("div");
   topRowLeftDiv.id = "top_row_left";
   const leftImage = document.createElement("img");
-  leftImage.src = "assets/images/tullen.jpg"; // Ange rätt sökväg till tullen.jpg
+  leftImage.src = "assets/images/tullen.jpg"; 
   leftImage.alt = "Bild på Tullen";
   leftImage.className = "start_page_Image";
   topRowLeftDiv.appendChild(leftImage);
@@ -511,8 +474,16 @@ function loadScene5() {
   const topRowCenterDiv = document.createElement("div");
   topRowCenterDiv.className = "top_row_center_div";
   topRowCenterDiv.id = "top_row_center";
-
+  
   // Visa items i inventory: "beer.jpg" och "gammeldansk.jpg" tillsammans med eventuella andra items
+  if (inventory.includes("mobil")) {
+    const mobileImage = document.createElement("img");
+    mobileImage.src = "assets/images/mobil.webp";
+    mobileImage.alt = "Bild på mobil";
+    mobileImage.className = "small_item_image";
+    topRowCenterDiv.appendChild(mobileImage);
+  }
+
   if (inventory.includes("cykel")) {
     const bikeImage = document.createElement("img");
     bikeImage.src = "assets/images/cykel.png";
@@ -537,68 +508,28 @@ function loadScene5() {
   topRow.appendChild(topRowCenterDiv);
   container.appendChild(topRow);
 
-  // Ändra texten till den nya texten
+  // Texten för scen 5
+  const topRowRightDiv = document.createElement("div");
+  topRowRightDiv.id = "top_row_right";
+  topRowRightDiv.style.textAlign = "left"; // Gör texten vänsterjusterad
   const congratulatoryText = document.createElement("p");
   congratulatoryText.textContent = "Stort grattis!!! Du har klarat provet och kan nu avnjuta en stor kall öl och en liten gammeldansk på Tullen. Nu kan du njuta av en lugn helg utan pluggande...tills det är dags igen. School mission kommer komma tillbaka i ny tappning.";
-  topRowCenterDiv.appendChild(congratulatoryText);
+  topRowRightDiv.appendChild(congratulatoryText);
 
-  // Botten-rad med en enda knapp
-  const bottomRowCenterDiv = document.createElement("div");
-  bottomRowCenterDiv.id = 'bottomRowCenterDiv';
+  topRow.appendChild(topRowLeftDiv);
+  topRow.appendChild(topRowCenterDiv);
+  topRow.appendChild(topRowRightDiv);
+  container.appendChild(topRow);
+  
+   // Botten-rad med knapp
+   const bottomRowCenterDiv = document.createElement("div");
+   bottomRowCenterDiv.id = 'bottomRowCenterDiv';
 
-  const restartButton = document.createElement("button");
-  restartButton.textContent = "Grattis!!! Gå till startsidan";
-  restartButton.className = "button1";
-  restartButton.onclick = loadStartScene;
+   const restartButton = document.createElement("button");
+   restartButton.textContent = "Grattis!!! Gå till startsidan";
+   restartButton.className = "button1";
+   restartButton.onclick = loadStartScene;
 
-  bottomRowCenterDiv.appendChild(restartButton);
-  container.appendChild(bottomRowCenterDiv);
-}
-
-// loadScene6
-function loadScene6() {
-  // Rensa scenen först
-  clearScene();
-
-  // Lägg till bild "trapporna.jpg" i scenen
-  const image1 = document.createElement("img");
-  image1.src = "trapporna.jpg";
-  document.body.appendChild(image1);
-
-  // Lägg till bild "granne.jpg" i scenen
-  const image2 = document.createElement("img");
-  image2.src = "granne.jpg";
-  document.body.appendChild(image2);
-
-  // Skapa knappen som leder tillbaka till loadScene1, om det behövs
-  const elevatorButton = document.createElement("button");
-  elevatorButton.innerText = "Tillbaka till Hissen";
-  elevatorButton.onclick = loadScene1;
-  document.body.appendChild(elevatorButton);
-}
-
-function helpNeighborWithPhone() {
-  // Funktion för att hantera valet "Hjälp grannen med mobilen"
-  const mainContainer = document.getElementById('main-container');
-  mainContainer.innerHTML = `
-      <img src="granne.jpg" alt="Granne">
-      <p>Du hjälper grannen med mobilen.</p>
-      <button onclick="loadScene1()">Tillbaka till början</button>
-  `;
-}
-
-function helpNeighborAfterSchool() {
-  // Funktion för att hantera valet "Hjälp grannen efter skolan"
-  const mainContainer = document.getElementById('main-container');
-  mainContainer.innerHTML = `
-      <img src="granne.jpg" alt="Granne">
-      <p>Du bestämmer dig för att hjälpa grannen efter skolan.</p>
-      <button onclick="loadScene1()">Tillbaka till början</button>
-  `;
-}
-
-// Scen för att gå till skolan
-function loadWalk() {
-  alert("Du valde att gå till skolan.");
-  loadScene3();
-}
+   bottomRowCenterDiv.appendChild(restartButton);
+   container.appendChild(bottomRowCenterDiv);
+ }
