@@ -292,7 +292,44 @@ function loadGameOver2() {
   container.appendChild(bottomRowCenterDiv);
 }
 
-// Scen 3 - Kopia av Scen 1 med modifieringar
+// Scen för Game Over när man snor cykeln
+function loadGameOver3() {
+  const container = document.getElementById("container");
+  container.innerHTML = "";
+
+  const topRow = document.createElement("div");
+  topRow.id = 'top_row';
+
+  const topRowCenterDiv = document.createElement("div");
+  topRowCenterDiv.className = "top_row_center_div";
+  topRowCenterDiv.id = "top_row_center";
+
+  const gameOverImage = document.createElement("img");
+  gameOverImage.src = "assets/images/polisen.jpg";
+  gameOverImage.alt = "Bild på polisen";
+  gameOverImage.className = "start_page_Image";
+  topRowCenterDiv.appendChild(gameOverImage);
+
+  const gameOverText = document.createElement("p");
+  gameOverText.textContent = "Busted!!! Du har blivit tagen av lagens långa arm. Du åker rätt i fängelse utan att passera gå.";
+  topRowCenterDiv.appendChild(gameOverText);
+
+  topRow.appendChild(topRowCenterDiv);
+  container.appendChild(topRow);
+
+  const bottomRowCenterDiv = document.createElement("div");
+  bottomRowCenterDiv.id = 'bottomRowCenterDiv';
+
+  const button = document.createElement("button");
+  button.textContent = "Börja om";
+  button.className = "button1";
+  button.onclick = loadStartScene;
+
+  bottomRowCenterDiv.appendChild(button);
+  container.appendChild(bottomRowCenterDiv);
+}
+
+// Scen 3
 function loadScene3() {
   const container = document.getElementById("container");
   container.innerHTML = "";
@@ -339,7 +376,7 @@ function loadScene3() {
   const button2 = document.createElement("button");
   button2.textContent = "Sno cykeln";
   button2.className = "button1";
-  button2.onclick = loadGameOver;
+  button2.onclick = loadGameOver3;
 
   bottomRowCenterDiv.appendChild(button1);
   bottomRowCenterDiv.appendChild(button2);
