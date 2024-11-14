@@ -26,7 +26,7 @@ body {
     align-items: center;
     border: 1px solid #00ff40;
     border-radius: 5px;
-    height: 70vh;
+    height: 75vh;
     width: 100%;
     gap: 20px;
 }
@@ -44,8 +44,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: left; /* Vänsterställer texten */
-    padding: 20px; /* Valfritt: Lägg till padding för lite luft runt texten */
+    text-align: left;
+    padding: 20px;
 }
 
 .start_page_Image {
@@ -83,12 +83,12 @@ body {
 }
 
 .small_item_image {
-    width: 50px; /* Justera storlek */
-    margin-top: 10px; /* Skapa utrymme mellan bilderna */
+    width: 70px; 
+    margin-top: 10px; 
   }
 
   .large_item_image {
-    width: 100px; /* Anpassa storleken efter behov */
-    height: auto; /* Bevara bildens proportioner */
-    margin-right: 10px; /* Mellanrum mellan bilderna */
+    width: 100px; 
+    height: auto; 
+    margin-right: 10px;
   }
