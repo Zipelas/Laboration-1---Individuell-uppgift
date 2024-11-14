@@ -86,3 +86,9 @@ body {
     width: 50px; /* Justera storlek */
     margin-top: 10px; /* Skapa utrymme mellan bilderna */
   }
+
+  .large_item_image {
+    width: 100px; /* Anpassa storleken efter behov */
+    height: auto; /* Bevara bildens proportioner */
+    margin-right: 10px; /* Mellanrum mellan bilderna */
+  }
