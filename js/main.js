@@ -195,7 +195,7 @@ function loadGameOver() {
 
   const gameOverImage = document.createElement("img");
   gameOverImage.src = "assets/images/falling.jpg";
-  gameOverImage.alt = "Bild på att du ramlade";
+  gameOverImage.alt = "Bild på att du har ramlat i trappan";
   gameOverImage.className = "start_page_Image";
   topRowCenterDiv.appendChild(gameOverImage);
 
@@ -232,7 +232,7 @@ function loadGameOver2() {
 
   const gameOverImage = document.createElement("img");
   gameOverImage.src = "assets/images/biljettkontroll.webp";
-  gameOverImage.alt = "Bild på biljettkontroll";
+  gameOverImage.alt = "Bild på biljettkontrollant";
   gameOverImage.className = "start_page_Image";
   topRowCenterDiv.appendChild(gameOverImage);
 
@@ -341,7 +341,7 @@ function loadScene3() {
   topRowLeftDiv.id = "top_row_left";
   const leftImage = document.createElement("img");
   leftImage.src = "assets/images/ullevi.jpg";
-  leftImage.alt = "Bild på Ullevi";
+  leftImage.alt = "Bild på cyklist utanför Ullevi";
   leftImage.className = "start_page_Image";
   topRowLeftDiv.appendChild(leftImage);
 
@@ -350,7 +350,7 @@ function loadScene3() {
   topRowCenterDiv.id = "top_row_center";
   const centerImage = document.createElement("img");
   centerImage.src = "assets/images/eas_right.jpg";
-  centerImage.alt = "Bild som visar väg till skolan";
+  centerImage.alt = "Bild på dig själv när du funderar vilket val du ska göra";
   centerImage.className = "start_page_Image";
   topRowCenterDiv.appendChild(centerImage);
 
@@ -406,7 +406,7 @@ function loadScene4() {
   topRowCenterDiv.id = "top_row_center";
   const centerImage = document.createElement("img");
   centerImage.src = "assets/images/eas_left.jpg";
-  centerImage.alt = "Bild på väg till skolan";
+  centerImage.alt = "Bild på dig själv när du funderar vilket val du ska göra";
   centerImage.className = "start_page_Image";
   topRowCenterDiv.appendChild(centerImage);
 
@@ -462,7 +462,6 @@ function loadScene5() {
   const topRow = document.createElement("div");
   topRow.id = 'top_row';
 
-  // Vänstra delen med "tullen.jpg"-bilden
   const topRowLeftDiv = document.createElement("div");
   topRowLeftDiv.id = "top_row_left";
   const leftImage = document.createElement("img");
@@ -475,7 +474,7 @@ function loadScene5() {
   topRowCenterDiv.className = "top_row_center_div";
   topRowCenterDiv.id = "top_row_center";
   
-  // Visa items i inventory: "beer.jpg" och "gammeldansk.jpg" tillsammans med eventuella andra items
+  // Inventory: "beer.jpg" och "gammeldansk.jpg" tillsammans med eventuella andra items
   if (inventory.includes("mobil")) {
     const mobileImage = document.createElement("img");
     mobileImage.src = "assets/images/mobil.webp";
@@ -494,7 +493,7 @@ function loadScene5() {
 
   const beerImage = document.createElement("img");
   beerImage.src = "assets/images/beer.jpg";
-  beerImage.alt = "Bild på öl";
+  beerImage.alt = "Bild på ölglas";
   beerImage.className = "small_item_image";
   topRowCenterDiv.appendChild(beerImage);
 
