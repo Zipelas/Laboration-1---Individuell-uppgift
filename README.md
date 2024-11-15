@@ -5,4 +5,4 @@ School mission är ett spel om hur du tar dig till skolan. Det finns lite hinder
 ---
 
 Länk till repo:
-https://github.com/Zipelas/Laboration-1---Individuell-uppgift
+https://zipelas.github.io/Laboration-1---Individuell-uppgift/
